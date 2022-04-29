@@ -18,7 +18,7 @@ pipeline {
       when {
         beforeAgent true
         changeRequest target: 'develop'
-        environment name:ENVIRONMENT:, value: 'dev'
+        environment name:ENVIRONMENT, value: 'dev'
       }
 
       stages {
