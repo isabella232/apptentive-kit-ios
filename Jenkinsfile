@@ -16,7 +16,7 @@ pipeline {
   stages {
     stage('Dev PR') {
       when {
-        beforeAgent: true
+        beforeAgent true
         changeRequest target: 'develop'
         expression {
           env.ENVIRONMENT == 'dev'
