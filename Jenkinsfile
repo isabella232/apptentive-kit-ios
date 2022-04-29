@@ -6,7 +6,7 @@ pipeline {
   options {
     timeout(time: 20, unit: 'MINUTES')
   }
-  
+
   environment {
     GEM_HOME=".gem"
     LC_ALL="en_US.UTF-8"
@@ -16,6 +16,7 @@ pipeline {
   stages {
     stage('Dev PR') {
       when {
+        beforeAgent: true
         changeRequest target: 'develop'
         expression {
           env.ENVIRONMENT == 'dev'
@@ -30,7 +31,7 @@ pipeline {
             }
           }
         }
-        
+
         stage('clean') {
           steps {
             script {
@@ -39,7 +40,7 @@ pipeline {
             }
           }
         }
-        
+
         stage('verification') {
           parallel {
             stage('test') {
